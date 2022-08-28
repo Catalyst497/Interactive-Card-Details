@@ -1,0 +1,10 @@
+@use 'sass:math';
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@function rem($pixel) {
+    @if unitless($pixel) {
+        @return math.div($pixel, 16) + rem;
+    }@else {
+        @error 'You do not need a unit for the pixel values';
+    }
+}

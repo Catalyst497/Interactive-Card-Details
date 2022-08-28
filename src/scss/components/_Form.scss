@@ -1,0 +1,59 @@
+@use '../globals' as *;
+
+form {
+	text-align: start;
+	width: 80%;
+	max-width: 20rem;
+	@include breakpoint(tablet) {
+		max-width: 30rem;
+	}
+	@include breakpoints-up(desktop) {
+		transform: translateX(30%);
+	}
+	> div {
+		margin-bottom: 1rem;
+	}
+	p {
+		font-size: 1rem;
+	}
+}
+div.date {
+	display: flex;
+	gap: 1rem;
+
+	input {
+	}
+
+	> div {
+		max-width: 50%;
+		flex: 1;
+		> div {
+			display: flex;
+			gap: 1rem;
+		}
+		&.cvc {
+			max-width: 40%;
+		}
+	}
+}
+label {
+	display: block;
+	color: $Very-dark-violet;
+	white-space: nowrap;
+}
+input {
+	display: block;
+	padding: 0.5rem;
+	margin-top: 0.2rem;
+	font-size: rem(18);
+	border: 1px solid $Light-grayish-violet;
+	border-radius: 0.2rem;
+	text-align: start;
+	width: 100%;
+	&:focus {
+		border: 1px solid $Dark-grayish-violet;
+	}
+	&::placeholder {
+		color: $Dark-grayish-violet;
+	}
+}

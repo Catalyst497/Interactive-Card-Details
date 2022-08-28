@@ -1,0 +1,81 @@
+@use '../globals' as *;
+
+[class^='card-'] {
+	position: absolute;
+	@include transition(transform);
+	border-radius: 0.5rem;
+}
+.card-back {
+	left: 0;
+	top: 53%;
+	transform: translateX(-50%);
+
+	img {
+		border-radius: 0.5rem;
+		box-shadow: 0.2rem 1rem 20px 0 #80808055;
+	}
+	@include breakpoint(tablet) {
+		top: -60%;
+		transform: translateX(-35%);
+		left: 50%;
+		z-index: -1;
+	}
+}
+.card-front {
+	color: white;
+	padding-inline: 2rem;
+	top: 50%;
+	left: 0;
+	transform: translate(-70%, -105%);
+	background-image: url(/src/images/bg-card-front.png);
+	box-shadow: 0.2rem 1rem 20px 0 #80808055;
+	height: 15.3rem;
+	width: 27.9rem;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas:
+		'lgs lgs lgs lgs'
+		'nul nul nul nul'
+		'num num num num'
+		'fut fut fut fut';
+	align-items: center;
+	@include breakpoint(tablet) {
+		top: -40%;
+		left: 5%;
+		transform: none;
+	}
+	.logos {
+		grid-area: lgs;
+		display: flex;
+		justify-content: flex-start;
+		gap: 1rem;
+		align-items: center;
+		div {
+			border-radius: 50%;
+		}
+		.logo1 {
+			background-color: white;
+			height: 3rem;
+
+			width: 3rem;
+		}
+		.logo2 {
+			border: 1px solid white;
+			height: 1.5rem;
+			width: 1.5rem;
+		}
+	}
+	.number {
+		grid-area: num;
+		font-size: 2rem;
+		text-align: center;
+	}
+	.footer-details {
+		grid-area: fut;
+		display: flex;
+		justify-content: space-between;
+		.name {
+			text-transform: uppercase;
+		}
+	}
+}

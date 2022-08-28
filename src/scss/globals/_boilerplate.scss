@@ -1,0 +1,123 @@
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+* {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+body {
+}
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
+ul {
+	list-style-type: none;
+}
+hr,
+.hr {
+	border: none;
+}
+button {
+	cursor: pointer;
+	background-color: transparent;
+	display: inline-block;
+}
+.flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.grid {
+	display: grid;
+	align-items: center;
+}
+input {
+	text-align: center;
+	background: transparent;
+}
+/* Chrome, Safari, Edge, Opera */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+/* Firefox */
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+input:focus,
+textarea:focus {
+	border: none;
+	outline: none;
+}
+.img {
+	> img {
+		width: 100%;
+		height: 100%;
+		border-radius: inherit;
+	}
+}
+@mixin margin-block($value) {
+	margin-top: $value;
+	margin-bottom: $value;
+}
+@mixin margin-inline($value) {
+	margin-left: $value;
+	margin-right: $value;
+}
+@mixin padding-block($value) {
+	padding-top: $value;
+	padding-bottom: $value;
+}
+@mixin padding-inline($value) {
+	padding-left: $value;
+	padding-right: $value;
+}
+@mixin transition($prop) {
+	transition: $prop 300ms ease-out;
+}
+@mixin fade-out($amnt) {
+	@include transition(opacity);
+	&:hover {
+		opacity: $amnt;
+	}
+}
+@mixin clr_n_hover($clr) {
+	color: $clr;
+	@include transition(color);
+	&:hover {
+		@if (lightness($clr) > 50) {
+			color: darken($clr, 40%);
+		} @else {
+			color: lighten($clr, 40%);
+		}
+	}
+}
+
+// Breakpoints
+// 480px, 1024px
+$breakpoints-down: (
+	'mobile': 30em,
+	'tablet': 64em,
+);
+$breakpoints-up: (
+	'tablet': 30em,
+	'desktop': 64em,
+);
+
+@mixin breakpoint($size) {
+	@media (max-width: map-get($breakpoints-down, $size)) {
+		@content;
+	}
+}
+@mixin breakpoints-up($size) {
+	@media (min-width: map-get($breakpoints-up, $size)) {
+		@content;
+	}
+}

@@ -1,0 +1,51 @@
+@use '../globals' as *;
+
+div#root {
+	font-family: $font;
+	font-size: rem(18);
+	display: flex;
+	justify-content: stretch;
+	@include breakpoint(tablet) {
+		flex-direction: column;
+	}
+}
+main {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	@include breakpoint(tablet) {
+		padding-top: 20%;
+	}
+}
+
+aside {
+	z-index: -10;
+	@include breakpoint(tablet) {
+		img {
+			width: 100%;
+			max-height: 50vh;
+		}
+	}
+}
+
+// THANK YOU
+.thank-you {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	div {
+		margin-block: 1rem;
+	}
+	h1 {
+		margin-block: 1rem;
+	}
+	p {
+		margin-block: 1rem;
+		font-size: rem(18);
+	}
+	button {
+		margin-top: 2rem;
+	}
+}
